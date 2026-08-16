@@ -1,13 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getSortedCollection } from '../lib/content';
 
-const events = (await getCollection('events')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const events = await getSortedCollection('events');
 ---
 
 <!doctype html>
@@ -17,7 +15,7 @@ const events = (await getCollection('events')).sort(
   </head>
   <body class="m-0 bg-[#d7d7d7] text-neutral-900 antialiased">
     <Header />
-    <main class="mx-auto max-w-7xl px-4 pb-10">
+    <main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-10">
       <h1 class="mb-5 text-[clamp(4.2rem,5vw,7rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Events</h1>
       <section class="grid gap-4 md:grid-cols-2" aria-label="Events">
         {events.map((event) => (

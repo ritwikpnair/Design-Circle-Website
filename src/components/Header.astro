@@ -4,22 +4,24 @@ import HeaderLink from './HeaderLink.astro';
 ---
 
 <header class="w-full border-b border-neutral-900/10 bg-[#d9d9d9]">
-  <div class="grid grid-cols-2 items-center gap-4 px-4 pb-2 pt-3">
-    <div class="flex h-11 items-center justify-center bg-neutral-950 text-2xl font-bold tracking-[-0.06em] text-neutral-100">
-      <span class="-translate-y-px">{SITE_TITLE}</span>
+  <div class="mx-auto w-[calc(100%-2rem)] max-w-[1280px]">
+    <div class="grid grid-cols-2 items-center gap-4 px-4 pb-2 pt-3">
+      <div class="flex h-11 items-center justify-center bg-neutral-950 text-2xl font-bold tracking-[-0.06em] text-neutral-100">
+        <span class="-translate-y-px">{SITE_TITLE}</span>
+      </div>
+      <div class="flex items-center justify-end gap-2.5" aria-label="Account">
+        <span class="inline-flex h-8 w-10 items-center justify-center rounded-lg bg-neutral-900/80 text-[0.8rem] font-bold text-white">SM</span>
+        <span class="inline-flex h-8 w-10 items-center justify-center rounded-lg bg-neutral-900/80 text-[0.8rem] font-bold text-white">SM</span>
+      </div>
     </div>
-    <div class="flex items-center justify-end gap-2.5" aria-label="Account">
-      <span class="inline-flex h-8 w-10 items-center justify-center rounded-lg bg-neutral-900/80 text-[0.8rem] font-bold text-white">SM</span>
-      <span class="inline-flex h-8 w-10 items-center justify-center rounded-lg bg-neutral-900/80 text-[0.8rem] font-bold text-white">SM</span>
-    </div>
-  </div>
 
-  <nav class="grid h-[62px] grid-cols-2 gap-2 bg-[#c8c8c8] px-2 py-1 md:grid-cols-6" aria-label="Main navigation">
-    <HeaderLink href="/" class="rounded-none">Home</HeaderLink>
-    <HeaderLink href="/about" class="rounded-none">About</HeaderLink>
-    <HeaderLink href="/blog" class="rounded-none">Blog</HeaderLink>
-    <HeaderLink href="/projects" class="rounded-none">Projects</HeaderLink>
-    <HeaderLink href="/events" class="rounded-none">Events</HeaderLink>
-    <HeaderLink href="/contact" class="rounded-none">Contact</HeaderLink>
-  </nav>
+    <nav class="grid h-[62px] grid-cols-2 gap-2 bg-[#c8c8c8] px-2 py-1 md:grid-cols-6" aria-label="Main navigation">
+      <HeaderLink href="/" class="rounded-none">Home</HeaderLink>
+      <HeaderLink href="/about" class="rounded-none">About</HeaderLink>
+      <HeaderLink href="/blog" class="rounded-none">Blog</HeaderLink>
+      <HeaderLink href="/projects" class="rounded-none">Projects</HeaderLink>
+      <HeaderLink href="/events" class="rounded-none">Events</HeaderLink>
+      <HeaderLink href="/contact" class="rounded-none">Contact</HeaderLink>
+    </nav>
+  </div>
 </header>
