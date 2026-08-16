@@ -3,136 +3,24 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header class="reference-header">
-	<div class="topbar">
-		<div class="brand-block"><span>{SITE_TITLE}</span></div>
-		<div class="account-badges" aria-label="Account">
-			<span>SM</span>
-			<span>SM</span>
-		</div>
-	</div>
-	<nav class="main-nav" aria-label="Main navigation">
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/projects">Projects</HeaderLink>
-		<HeaderLink href="/events">Events</HeaderLink>
-		<HeaderLink href="/contact">Contact</HeaderLink>
-	</nav>
+<header class="w-full bg-white">
+  <div class="mx-auto w-[calc(100%-2rem)] max-w-[1280px]">
+    <div class="flex items-center justify-between gap-3 py-3">
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex h-10 items-center justify-center bg-neutral-950 px-4 text-lg font-bold tracking-[-0.06em] text-neutral-100 shadow-[0_4px_10px_rgba(0,0,0,0.2)] no-underline transition-opacity hover:opacity-90">
+          <span class="-translate-y-px">{SITE_TITLE}</span>
+        </a>
+        <nav class="flex items-center gap-2" aria-label="Primary navigation left">
+          <HeaderLink href="/about" class="rounded-full bg-neutral-200/90 px-4 py-2.5 text-sm font-medium text-neutral-900 shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:bg-[#e6e6e6]">About</HeaderLink>
+          <HeaderLink href="/contact" class="rounded-full bg-neutral-200/90 px-4 py-2.5 text-sm font-medium text-neutral-900 shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:bg-[#e6e6e6]">Contact</HeaderLink>
+        </nav>
+      </div>
+
+      <nav class="flex items-center justify-end gap-2" aria-label="Primary navigation right">
+        <HeaderLink href="/blog" class="rounded-full border-2 border-[#c9c9c9] bg-neutral-200/90 px-4 py-2.5 text-sm font-medium text-neutral-900 shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:bg-[#e6e6e6]">Blog</HeaderLink>
+        <HeaderLink href="/projects" class="rounded-full border-2 border-[#c9c9c9] bg-neutral-200/90 px-4 py-2.5 text-sm font-medium text-neutral-900 shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:bg-[#e6e6e6]">Projects</HeaderLink>
+        <HeaderLink href="/events" class="rounded-full border-2 border-[#c9c9c9] bg-neutral-200/90 px-4 py-2.5 text-sm font-medium text-neutral-900 shadow-[0_2px_0_rgba(0,0,0,0.06)] hover:bg-[#e6e6e6]">Events</HeaderLink>
+      </nav>
+    </div>
+  </div>
 </header>
-
-<style>
-	.reference-header {
-		width: 100%;
-		background: #d9d9d9;
-		border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-	}
-
-	.topbar {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		padding: 10px 16px 8px;
-		background: #d9d9d9;
-	}
-
-	.menu-toggle {
-		display: inline-flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 5px;
-		width: 38px;
-		height: 38px;
-		padding: 0;
-		background: transparent;
-		border: none;
-		cursor: pointer;
-	}
-
-	.menu-toggle span {
-		display: block;
-		height: 3px;
-		background: #0b0b0b;
-		border-radius: 4px;
-	}
-
-	.brand-block {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 42px;
-		background: #111;
-		border-radius: 0;
-		font-size: 2rem;
-		font-weight: 700;
-		color: #f3f3f3;
-		letter-spacing: -0.06em;
-	}
-
-	.brand-block span {
-		transform: translateY(-1px);
-	}
-
-	.account-badges {
-		display: flex;
-		justify-content: flex-end;
-		gap: 10px;
-	}
-
-	.account-badges span {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: 42px;
-		height: 32px;
-		background: rgba(0, 0, 0, 0.72);
-		border-radius: 8px;
-		color: #fff;
-		font-size: 0.8rem;
-		font-weight: 700;
-	}
-
-	.main-nav {
-		display: grid;
-		grid-template-columns: repeat(6, minmax(110px, 1fr));
-		align-items: center;
-		background: #c8c8c8;
-		height: 62px;
-		padding: 0 8px;
-	}
-
-	.main-nav a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-		font-size: 1.1rem;
-		font-weight: 500;
-		color: #151515;
-		text-decoration: none;
-		transition: background 0.2s ease;
-		padding: 0 10px;
-	}
-
-	.main-nav a.active {
-		box-shadow: inset 0 -3px 0 #111;
-		font-weight: 700;
-	}
-
-	.main-nav a:hover {
-		background: rgba(0, 0, 0, 0.02);
-	}
-
-	@media (max-width: 720px) {
-		.topbar {
-			grid-template-columns: auto 1fr auto;
-		}
-
-		.main-nav {
-			grid-template-columns: repeat(2, minmax(120px, 1fr));
-			height: auto;
-			padding: 8px;
-			gap: 8px;
-		}
-	}
-</style>

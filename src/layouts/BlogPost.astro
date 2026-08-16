@@ -12,341 +12,244 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			:root {
-				--article-bg: #d8d8d8;
-				--article-panel: rgba(255, 255, 255, 0.2);
-				--article-text: #111111;
-				--article-muted: #4e4e4e;
-				--article-rule: rgba(17, 17, 17, 0.4);
-				--article-link: #0f5ec7;
-			}
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      :root {
+        --page-bg: #ffffff;
+        --text: #171717;
+        --muted: #5f5f5f;
+        --rule: rgba(23, 23, 23, 0.12);
+        --code-bg: #111827;
+        --code-inline: #f3f4f6;
+        --link: #111827;
+      }
 
-			body {
-				background: var(--article-bg);
-				color: var(--article-text);
-				font-family: Arial, Helvetica, sans-serif;
-			}
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-			main {
-				width: 100%;
-				margin: 0;
-				padding: 0;
-				background: var(--article-bg);
-			}
+      .article-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 0 64px;
+      }
 
-			.article-shell {
-				max-width: 1180px;
-				margin: 0 auto;
-				padding: 18px 18px 60px;
-				box-sizing: border-box;
-			}
+      .article-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
 
-			.article-header {
-				display: grid;
-				grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
-				gap: 28px;
-				align-items: start;
-				max-width: 1160px;
-				margin: 0 auto;
-				padding-top: 12px;
-			}
+      .hero-image {
+        margin: 0 0 1.5rem;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #111827;
+      }
 
-			.author-column {
-				padding-top: 8px;
-			}
+      .hero-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
 
-			.author-card {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 8px;
-				padding-top: 10px;
-				text-align: center;
-			}
+      .date {
+        margin: 0 0 0.8rem;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
 
-			.author-avatar {
-				width: 54px;
-				height: 54px;
-				border-radius: 50%;
-				background: #bcbcbc;
-				border: 1px solid rgba(17, 17, 17, 0.18);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 1.2rem;
-				font-weight: 700;
-				color: #111;
-			}
+      h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 4vw, 5rem);
+        line-height: 0.94;
+        letter-spacing: -0.08em;
+        font-weight: 700;
+        color: var(--text);
+      }
 
-			.author-name {
-				margin: 0;
-				font-size: 1.1rem;
-				font-weight: 700;
-				letter-spacing: -0.04em;
-			}
+      .article-divider {
+        height: 1px;
+        margin: 1.5rem 0 0;
+        background: var(--rule);
+      }
 
-			.author-bio {
-				margin: 0;
-				font-size: 0.95rem;
-				line-height: 1.5;
-				color: var(--article-muted);
-			}
+      .prose {
+        margin-top: 1.5rem;
+        color: var(--text);
+        font-size: clamp(1.05rem, 0.38vw + 0.9rem, 1.2rem);
+        line-height: 1.8;
+        letter-spacing: -0.01em;
+      }
 
-			.author-follow {
-				display: inline-block;
-				margin-top: 4px;
-				padding: 6px 10px;
-				border: 1px solid rgba(17, 17, 17, 0.5);
-				border-radius: 999px;
-				font-size: 0.82rem;
-				font-weight: 600;
-				text-decoration: none;
-				color: #111;
-			}
+      .prose > :first-child {
+        margin-top: 0;
+      }
 
-			.article-main {
-				max-width: 760px;
-				margin: 0 auto;
-			}
+      .prose :where(h1, h2, h3, h4, h5, h6) {
+        margin-top: 2.1em;
+        margin-bottom: 0.8em;
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+        color: var(--text);
+      }
 
-			.hero-image {
-				width: 100%;
-				margin: 0 auto 14px;
-				border-radius: 18px;
-				overflow: hidden;
-			}
+      .prose :where(h1) {
+        font-size: clamp(2.2rem, 2vw + 1rem, 3.2rem);
+      }
 
-			.hero-image img {
-				display: block;
-				width: 100%;
-				height: auto;
-				border-radius: 18px;
-				object-fit: cover;
-				background: #111;
-			}
+      .prose :where(h2) {
+        font-size: clamp(1.8rem, 1.5vw + 1rem, 2.5rem);
+      }
 
-			.title {
-				padding: 0 0 10px;
-				margin: 0;
-			}
+      .prose :where(h3) {
+        font-size: clamp(1.4rem, 1vw + 0.9rem, 1.9rem);
+      }
 
-			.date {
-				margin: 0 0 16px;
-				font-size: 0.95rem;
-				letter-spacing: 0.02em;
-				color: var(--article-muted);
-				text-transform: none;
-			}
+      .prose :where(p, ul, ol, blockquote, pre, table, img) {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+      }
 
-			.title h1 {
-				margin: 0;
-				font-size: clamp(2.5rem, 3vw + 1.25rem, 5rem);
-				line-height: 0.96;
-				letter-spacing: -0.07em;
-				font-weight: 700;
-				color: #111;
-			}
+      .prose :where(a) {
+        color: var(--link);
+        text-decoration: underline;
+        text-underline-offset: 0.12em;
+      }
 
-			.article-divider {
-				height: 1px;
-				background: var(--article-rule);
-				margin: 18px 0 0;
-			}
+      .prose :where(strong, b) {
+        font-weight: 700;
+      }
 
-			.prose {
-				max-width: 760px;
-				margin: 0 auto;
-				padding: 1.2em 0 0;
-				color: var(--article-text);
-				font-size: 1.15rem;
-				line-height: 1.7;
-				letter-spacing: -0.01em;
-			}
+      .prose :where(ul, ol) {
+        padding-left: 1.5em;
+      }
 
-			.prose > *:first-child {
-				margin-top: 0;
-			}
+      .prose :where(li) {
+        margin-bottom: 0.45em;
+      }
 
-			.prose p {
-				margin: 0 0 1.55em;
-			}
+      .prose :where(blockquote) {
+        margin: 1.8rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid rgba(23, 23, 23, 0.45);
+        color: var(--muted);
+        font-style: italic;
+      }
 
-			.prose h2,
-			.prose h3,
-			.prose h4 {
-				margin: 2em 0 0.8em;
-				letter-spacing: -0.05em;
-				line-height: 1.1;
-				color: #111;
-			}
+      .prose :where(code) {
+        border-radius: 0.4rem;
+        background: var(--code-inline);
+        border: 1px solid rgba(23, 23, 23, 0.08);
+        padding: 0.12em 0.45em;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.9em;
+      }
 
-			.prose h2 {
-				font-size: clamp(1.8rem, 1.7vw + 1rem, 2.8rem);
-			}
+      .prose :where(pre) {
+        position: relative;
+        overflow-x: auto;
+        padding: 1.2rem 1rem 1rem;
+        border-radius: 0.9rem;
+        background: var(--code-bg);
+        color: #f8fafc;
+        border: 1px solid rgba(17, 17, 17, 0.12);
+        box-shadow: 0 12px 28px rgba(17, 17, 17, 0.08);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
 
-			.prose h3 {
-				font-size: clamp(1.45rem, 1.2vw + 1rem, 2.1rem);
-			}
+      .prose :where(pre)::before {
+        content: "";
+        position: absolute;
+        top: 0.9rem;
+        left: 1rem;
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #f87171;
+        box-shadow: 1.4rem 0 0 #fbbf24, 2.8rem 0 0 #4ade80;
+      }
 
-			.prose a {
-				color: var(--article-link);
-				text-decoration: underline;
-				text-underline-offset: 0.12em;
-			}
+      .prose :where(pre code) {
+        background: transparent;
+        padding: 0;
+        border: none;
+        color: inherit;
+      }
 
-			.prose strong {
-				font-weight: 700;
-			}
+      .prose :where(img) {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin: 2rem auto;
+      }
 
-			.prose code {
-				padding: 0.14em 0.44em;
-				border-radius: 6px;
-				background: rgba(177, 176, 176, 0.87);
-				border: 1px solid rgba(105, 105, 105, 0.842);
-				font-family: Consolas, Monaco, monospace;
-				font-size: 0.9em;
-				font-weight: 500;
-			}
+      .prose :where(hr) {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 2.25rem 0;
+      }
 
-			.prose pre {
-				position: relative;
-				overflow: auto;
-				padding: 2.7rem 1.15rem 1rem;
-				border-radius: 12px;
-				background: #1e1e1f;
-				color: #f2f2f2;
-				margin: 1.7em 0;
-				border: 1px solid rgba(17, 17, 17, 0.22);
-				box-shadow: 0 8px 20px rgba(17, 17, 17, 0.08);
-				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-				font-size: 0.88rem;
-				line-height: 1.7;
-				letter-spacing: 0;
-			}
+      .prose :where(table) {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+      }
 
-			.prose pre::before {
-				content: "";
-				position: absolute;
-				top: 0.9rem;
-				left: 1rem;
-				display: block;
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				background: #f26a6a;
-				box-shadow: 1.35rem 0 0 #f1bf5d, 2.7rem 0 0 #58c76d;
-			}
+      .prose :where(th, td) {
+        padding: 0.7rem 0.9rem;
+        border-bottom: 1px solid var(--rule);
+        text-align: left;
+      }
 
-			.prose pre::after {
-				content: attr(data-language);
-				position: absolute;
-				top: 0.8rem;
-				right: 1.2rem;
-				font-size: 0.68rem;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				color: rgba(255, 255, 255, 0.72);
-			}
+      .prose :where(th) {
+        background: #f5f5f5;
+        font-weight: 700;
+      }
 
-			.prose pre code,
-			.prose pre .line {
-				display: block;
-				white-space: pre;
-				min-height: 1.5em;
-				font-family: inherit;
-				font-size: inherit;
-				line-height: inherit;
-			}
+      @media (max-width: 640px) {
+        .article-shell {
+          padding-inline: 0.75rem;
+        }
+      }
+    </style>
+  </head>
 
-			.prose pre code {
-				background: transparent;
-				padding: 0;
-				border: none;
-				color: inherit;
-			}
+  <body>
+    <Header />
+    <main class="article-shell">
+      <article class="article-inner">
+        {heroImage && (
+          <div class="hero-image">
+            <Image width={1020} height={510} src={heroImage} alt={title} />
+          </div>
+        )}
 
-			.prose ul,
-			.prose ol {
-				margin: 0 0 1.5em 1.5em;
-				padding: 0;
-			}
+        <div class="date">
+          <FormattedDate date={pubDate} />
+          {updatedDate && (
+            <span> • Updated <FormattedDate date={updatedDate} /></span>
+          )}
+        </div>
 
-			.prose li {
-				margin-bottom: 0.5em;
-			}
+        <h1>{title}</h1>
+        <div class="article-divider"></div>
 
-			.prose blockquote {
-				margin: 1.6em 0;
-				padding-left: 1rem;
-				border-left: 3px solid rgba(17, 17, 17, 0.5);
-				color: var(--article-muted);
-				font-style: italic;
-			}
-
-			.prose img {
-				display: block;
-				max-width: 100%;
-				height: auto;
-				margin: 2em auto;
-				border-radius: 12px;
-			}
-
-			@media (max-width: 840px) {
-				.article-header {
-					grid-template-columns: 1fr;
-					gap: 12px;
-				}
-
-				.author-column {
-					padding-top: 0;
-				}
-
-				.author-card {
-					align-items: flex-start;
-					text-align: left;
-				}
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article class="article-shell">
-				<div class="article-header">
-					<div class="author-column">
-						<div class="author-card">
-							<div class="author-avatar">L</div>
-							<p class="author-name">Logo editorial</p>
-							<p class="author-bio">Design notes, writing, and product thinking.</p>
-							<a class="author-follow" href="/about">Follow</a>
-						</div>
-					</div>
-
-					<div class="article-main">
-						<div class="hero-image">
-							{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-						</div>
-						<div class="title">
-							<div class="date">
-								<FormattedDate date={pubDate} />
-								{updatedDate && (
-									<span> • Updated <FormattedDate date={updatedDate} /></span>
-								)}
-							</div>
-							<h1>{title}</h1>
-						</div>
-						<div class="article-divider"></div>
-						<div class="prose">
-							<slot />
-						</div>
-					</div>
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+        <div class="prose">
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

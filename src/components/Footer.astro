@@ -1,248 +1,60 @@
 ---
 const companyLinks = ['Contact Us', 'Work', 'Blog', 'Careers', 'About', 'Sitemap'];
 const serviceColumns = [
-	{
-		title: 'Design & Marketing',
-		items: ['Digital Product Design', 'UX Design & Wireframes', 'Creative Web Design', 'Digital Strategy', 'eCommerce Branding', 'Content Marketing', 'Growth Marketing', 'Paid Search Ads', 'Email Marketing'],
-	},
-	{
-		title: 'Development',
-		items: ['Android App Development', 'iOS App Development', 'Web Development', 'React Native Development', 'Enterprise App Development', 'CMS Development', 'Node.js Development', 'Full Stack Development', 'Progressive App Development', 'Blockchain App Development'],
-	},
-	{
-		title: 'Industries',
-		items: ['FinTech', 'eCommerce', 'Travel', 'Social Media', 'Blockchain/Web3', 'Healthcare', 'Startups', 'SaaS', 'Non-Profit', 'Marketplace'],
-	},
+  {
+    title: 'Design & Marketing',
+    items: ['Digital Product Design', 'UX Design & Wireframes', 'Creative Web Design', 'Digital Strategy', 'eCommerce Branding', 'Content Marketing', 'Growth Marketing', 'Paid Search Ads', 'Email Marketing'],
+  },
+  {
+    title: 'Development',
+    items: ['Android App Development', 'iOS App Development', 'Web Development', 'React Native Development', 'Enterprise App Development', 'CMS Development', 'Node.js Development', 'Full Stack Development', 'Progressive App Development', 'Blockchain App Development'],
+  },
+  {
+    title: 'Industries',
+    items: ['FinTech', 'eCommerce', 'Travel', 'Social Media', 'Blockchain/Web3', 'Healthcare', 'Startups', 'SaaS', 'Non-Profit', 'Marketplace'],
+  },
 ];
 ---
 
-<footer class="site-footer">
-	<div class="footer-top">
-		<div class="avatar-wrap" aria-hidden="true">
-			<div class="avatar-mark">D</div>
-		</div>
-		<div class="cta-bar">
-			<span>If you'd like to work with us,</span>
-			<a href="/contact">get in touch.</a>
-			<span class="arrow">→</span>
-		</div>
-	</div>
+<footer class="mx-auto mt-6 w-[calc(100%-2rem)] max-w-[1280px] overflow-hidden rounded-t-[18px] bg-[#d4d4d4] text-neutral-900 shadow-[0_-8px_24px_rgba(0,0,0,0.08)]">
+  <div class="flex min-h-[120px] items-center justify-between gap-6 border-b border-neutral-900/40 px-4 py-5 md:px-5">
+    <div class="flex h-[120px] w-[110px] items-center justify-center" aria-hidden="true">
+      <div class="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-950 text-[2.2rem] font-bold tracking-[-0.08em] text-neutral-100">D</div>
+    </div>
 
-	<div class="footer-links-wrap">
-		<div class="footer-column footer-column-left">
-			<div class="company-info">NY-LA-SF</div>
-			<div class="company-info">646 669 9140</div>
-			<div class="company-info">Instagram</div>
-			<div class="company-info">LinkedIn</div>
-			<div class="company-info">X</div>
-		</div>
+    <div class="flex w-full items-center justify-end gap-2 rounded-full bg-white/10 px-5 py-3 text-[clamp(1.2rem,2vw,2rem)] tracking-[-0.04em]">
+      <span>If you'd like to work with us,</span>
+      <a href="/contact" class="font-medium text-blue-700 underline-offset-4 hover:underline">get in touch.</a>
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-white/70 text-xl font-semibold text-neutral-900">→</span>
+    </div>
+  </div>
 
-		<div class="footer-column footer-column-middle">
-			{companyLinks.map((link) => <a href="#">{link}</a>)}
-		</div>
+  <div class="grid gap-8 border-b border-neutral-900/40 px-4 pb-5 pt-7 md:grid-cols-[0.9fr_0.9fr_1.2fr_1.2fr_1fr] md:px-5">
+    <div class="flex flex-col gap-2 text-base leading-relaxed text-neutral-900">
+      <div>NY-LA-SF</div>
+      <div>646 669 9140</div>
+      <div>Instagram</div>
+      <div>LinkedIn</div>
+      <div>X</div>
+    </div>
 
-		{serviceColumns.map((column) => (
-			<div class="footer-column footer-column-list">
-				<h3>{column.title}</h3>
-				{column.items.map((item) => <span>{item}</span>)}
-			</div>
-		))}
-	</div>
+    <div class="flex flex-col gap-2 text-base text-neutral-900">
+      {companyLinks.map((link) => <a href="#" class="hover:underline">{link}</a>)}
+    </div>
 
-	<div class="footer-lower">
-		<div class="legal-links">
-			<span class="dot"></span>
-			<span>Terms of Service</span>
-			<span>Privacy Policy</span>
-		</div>
-	</div>
+    {serviceColumns.map((column) => (
+      <div class="flex flex-col gap-2 text-base text-neutral-900">
+        <h3 class="mb-1 text-base font-bold">{column.title}</h3>
+        {column.items.map((item) => <span>{item}</span>)}
+      </div>
+    ))}
+  </div>
+
+  <div class="flex items-center justify-between gap-4 px-4 py-4 text-base text-neutral-900 md:px-5">
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-neutral-900"></span>
+      <span>Terms of Service</span>
+      <span>Privacy Policy</span>
+    </div>
+  </div>
 </footer>
-
-<style>
-	.site-footer {
-		margin: 0 24px 0;
-		padding: 0 18px 18px;
-		box-sizing: border-box;
-		background: #d4d4d4;
-		color: #111;
-		font-family: Arial, Helvetica, sans-serif;
-		border-radius: 18px 18px 0 0;
-		overflow: hidden;
-		box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
-	}
-
-	.footer-top {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 24px;
-		min-height: 120px;
-		padding: 20px 10px 18px;
-		border-bottom: 2px solid rgba(17, 17, 17, 0.42);
-		box-sizing: border-box;
-	}
-
-	.avatar-wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 110px;
-		height: 120px;
-		padding-top: 2px;
-	}
-
-	.avatar-mark {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 52px;
-		height: 52px;
-		border-radius: 50%;
-		background: #111;
-		color: #f3f3f3;
-		font-size: 2.2rem;
-		font-weight: 700;
-		line-height: 1;
-		letter-spacing: -0.08em;
-		box-sizing: border-box;
-		padding: 0;
-	}
-
-	.cta-bar {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		gap: 8px;
-		width: 100%;
-		min-height: 62px;
-		padding: 0 18px;
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 999px;
-		font-size: clamp(1.2rem, 2vw, 2rem);
-		letter-spacing: -0.04em;
-		color: #111;
-		box-sizing: border-box;
-		transform: translateY(1px);
-	}
-
-	.cta-bar a {
-		color: #0f5ec7;
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	.cta-bar .arrow {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 30px;
-		height: 30px;
-		border-radius: 10px;
-		background: rgba(255, 255, 255, 0.72);
-		color: #111;
-		font-size: 1.6rem;
-		font-weight: 600;
-		line-height: 1;
-		box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.12);
-		transform: translateY(-2px);
-		padding-bottom: 2px;
-	}
-
-	.footer-links-wrap {
-		display: grid;
-		grid-template-columns: 0.9fr 0.9fr 1.2fr 1.2fr 1fr;
-		gap: 36px 28px;
-		padding: 28px 10px 20px;
-		border-bottom: 2px solid rgba(17, 17, 17, 0.42);
-	}
-
-	.footer-column {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		font-size: 1.05rem;
-		line-height: 1.35;
-		letter-spacing: -0.03em;
-	}
-
-	.footer-column-left .company-info,
-	.footer-column-middle a,
-	.footer-column-list span,
-	.footer-column-list h3 {
-		color: #111;
-		text-decoration: none;
-	}
-
-	.footer-column-middle {
-		padding-right: 18px;
-	}
-
-	.footer-column-middle a {
-		display: block;
-		font-size: 1.05rem;
-	}
-
-	.footer-column-list h3 {
-		margin: 0 0 8px;
-		font-size: 1.05rem;
-		font-weight: 700;
-	}
-
-	.footer-column-list span {
-		display: block;
-		font-size: 1.05rem;
-	}
-
-	.footer-lower {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 20px;
-		padding: 18px 10px 0;
-		font-size: 1rem;
-	}
-
-	.legal-links {
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 12px;
-		font-size: 1.05rem;
-		color: #111;
-	}
-
-	.dot {
-		display: inline-block;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: #111;
-	}
-
-		@media (max-width: 980px) {
-		.footer-links-wrap {
-			grid-template-columns: repeat(2, minmax(180px, 1fr));
-		}
-	}
-
-	@media (max-width: 720px) {
-		.footer-top,
-		.footer-lower {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-
-		.cta-bar {
-			justify-content: flex-start;
-			padding: 12px 16px;
-		}
-
-		.footer-links-wrap {
-			grid-template-columns: 1fr;
-		}
-
-		.start-button {
-			width: 100%;
-		}
-	}
-</style>

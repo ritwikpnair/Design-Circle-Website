@@ -1,13 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getSortedCollection } from '../lib/content';
 
-const events = (await getCollection('events')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const events = await getSortedCollection('events');
 ---
 
 <!doctype html>
@@ -15,25 +13,21 @@ const events = (await getCollection('events')).sort(
   <head>
     <BaseHead title={`Events | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
   </head>
-  <body class="blog-page-body">
+  <body class="m-0 bg-white text-neutral-900 antialiased">
     <Header />
-    <main class="blog-page-shell">
-      <h1>Events</h1>
-      <section class="blog-grid" aria-label="Events">
+    <main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-12 pt-6">
+      <h1 class="mb-6 text-[clamp(4.2rem,5vw,7rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Events</h1>
+      <section class="grid gap-4 md:grid-cols-2" aria-label="Events">
         {events.map((event) => (
-          <article class="post-card">
-            <a class="post-link" href={`/events/${event.id}/`}>
+          <article class="flex flex-col overflow-hidden rounded-[22px] border-2 border-[#c9c9c9] bg-white/45 shadow-[0_12px_30px_rgba(17,17,17,0.08)] backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#a8a8a8] hover:shadow-[0_16px_30px_rgba(17,17,17,0.12)]">
+            <a class="block text-inherit no-underline" href={`/events/${event.id}/`}>
               {event.data.heroImage && (
-                <img
-                  class="post-media"
-                  src={event.data.heroImage.src}
-                  alt={event.data.title}
-                />
+                <img class="block h-[250px] w-full object-cover bg-neutral-950" src={event.data.heroImage.src} alt={event.data.title} />
               )}
-              <div class="post-meta">
-                <h2>{event.data.title}</h2>
-                <p>{event.data.description}</p>
-                <span>Read Event</span>
+              <div class="grid gap-1 px-3.5 pb-3.5 pt-3">
+                <h2 class="m-0 text-[clamp(1.5rem,2vw,2.2rem)] font-medium leading-[1.1] tracking-[-0.05em] text-neutral-900">{event.data.title}</h2>
+                <p class="m-0 text-base text-neutral-800">{event.data.description}</p>
+                <span class="mt-1 text-base font-medium text-blue-700">Read Event</span>
               </div>
             </a>
           </article>
@@ -43,90 +37,3 @@ const events = (await getCollection('events')).sort(
     <Footer />
   </body>
 </html>
-
-<style>
-  .blog-page-body {
-    margin: 0;
-    background: #d7d7d7;
-    color: #111;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .blog-page-shell {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 18px 40px;
-    box-sizing: border-box;
-  }
-
-  .blog-page-shell h1 {
-    margin: 16px 0 18px;
-    font-size: clamp(4.2rem, 5vw, 7rem);
-    line-height: 0.9;
-    letter-spacing: -0.08em;
-    font-weight: 700;
-    color: #111;
-  }
-
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .post-card {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .post-media {
-    display: block;
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
-    background: #111;
-  }
-
-  .post-meta {
-    display: grid;
-    gap: 4px;
-    padding: 12px 14px 14px;
-    background: #cfcfcf;
-    box-sizing: border-box;
-  }
-
-  .post-meta h2 {
-    margin: 0;
-    font-size: clamp(1.5rem, 2vw, 2.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.05em;
-    font-weight: 500;
-    color: #111;
-  }
-
-  .post-meta p {
-    margin: 0;
-    color: #111;
-    font-size: 1rem;
-  }
-
-  .post-meta span {
-    margin-top: 8px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    color: #0f5ec7;
-  }
-
-  @media (max-width: 720px) {
-    .blog-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
