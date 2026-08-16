@@ -7,299 +7,47 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={`About | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="about-page-body">
-		<Header />
-		<main class="about-page-shell">
-			<section class="about-hero">
-				<div class="hero-inner">
-					<div class="hero-label">Photo/Video/GIF</div>
-					<h1>About Us</h1>
-				</div>
-			</section>
+  <head>
+    <BaseHead title={`About | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="m-0 bg-[#2f2f2f] text-neutral-900 antialiased">
+    <Header />
+    <main class="min-h-screen bg-[#c5c5c5]">
+      <section class="flex min-h-[calc(100vh-126px)] items-end bg-[#c5c5c5] px-8 py-7">
+        <div class="mx-auto w-full max-w-7xl">
+          <div class="mb-3 text-center text-[clamp(2rem,2vw+1.2rem,3.1rem)] font-medium tracking-[-0.05em] text-neutral-900">Photo/Video/GIF</div>
+          <h1 class="m-0 text-[clamp(4rem,7vw,8rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-100">About Us</h1>
+        </div>
+      </section>
 
-			<div class="content-inner">
-				<section class="about-grid" aria-label="About highlights">
-					<div class="card card-light card-achievements">Achievements</div>
-					<div class="card card-light card-orientation">Orientation<br />stats</div>
-					<div class="card card-dark card-monogram">P</div>
-					<div class="card card-light card-stats">Stats</div>
-					<div class="card card-dark card-animation">Animation</div>
-					<div class="card card-light card-description">Events Description</div>
-				</section>
+      <div class="mx-auto max-w-7xl px-4 pb-4">
+        <section class="grid gap-3 bg-[#c5c5c5] pt-3 md:grid-cols-[1.5fr_1.1fr_0.8fr]" aria-label="About highlights">
+          <div class="flex h-28 items-center justify-center bg-[#d8d8d8] text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Achievements</div>
+          <div class="flex h-28 items-center justify-center bg-[#d8d8d8] text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Orientation<br />stats</div>
+          <div class="flex h-[214px] items-center justify-center bg-neutral-950 text-[clamp(2.4rem,3vw,4rem)] font-medium tracking-[-0.05em] text-neutral-100">P</div>
+          <div class="flex h-28 items-center justify-center bg-[#d8d8d8] text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Stats</div>
+          <div class="flex h-[194px] items-center justify-center bg-neutral-950 text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-100">Animation</div>
+          <div class="flex h-[88px] items-center justify-center bg-[#d8d8d8] text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Events Description</div>
+        </section>
 
-				<section class="story-section">
-					<div class="story-topline">
-						<div class="story-number">01</div>
-						<div class="story-title-block">
-							<h2>Our Story</h2>
-							<p>Description</p>
-						</div>
-					</div>
-					<div class="story-callout">
-						<span>Scroll</span>
-						<button type="button" aria-label="Scroll">→</button>
-					</div>
-					<div class="story-number-end">02</div>
-				</section>
-			</div>
-		</main>
-		<Footer />
-	</body>
+        <section class="relative h-[100vh] bg-[#c5c5c5] pt-8">
+          <div class="flex items-center gap-4 px-4 sm:gap-6">
+            <div class="text-[clamp(5rem,7vw,11rem)] font-bold leading-[0.7] tracking-[-0.08em] text-white/80">01</div>
+            <div class="space-y-3 pb-2">
+              <h2 class="m-0 text-[clamp(2.8rem,4vw,5rem)] font-bold leading-none tracking-[-0.07em] text-neutral-900">Our Story</h2>
+              <p class="m-0 text-lg text-neutral-900">Description</p>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between border-t-2 border-neutral-900/60 px-4 pt-4 text-[clamp(1.4rem,2vw,2rem)] font-medium tracking-[-0.05em] text-neutral-900">
+            <span>Scroll</span>
+            <button type="button" aria-label="Scroll" class="h-11 w-[110px] border-0 bg-transparent text-[3rem] leading-none text-neutral-900">→</button>
+          </div>
+
+          <div class="absolute bottom-4 right-4 text-[clamp(5rem,8vw,12rem)] font-bold leading-[0.7] tracking-[-0.08em] text-white/80">02</div>
+        </section>
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
-
-<style>
-	.about-page-body {
-		margin: 0;
-		background: #2f2f2f;
-		color: #111;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-	.about-page-shell {
-		margin: 0;
-		padding: 0;
-	}
-
-	.about-hero {
-		position: relative;
-		width: 100%;
-		display: flex;
-		align-items: flex-end;
-		min-height: calc(100vh - 126px);
-		background: #c5c5c5;
-		padding: 28px 32px 28px;
-		box-sizing: border-box;
-	}
-
-	.hero-inner {
-		width: 100%;
-		max-width: 1280px;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		margin: 0 auto;
-		box-sizing: border-box;
-		height: 100%;
-	}
-
-	.hero-label {
-		font-size: clamp(2rem, 2vw + 1.2rem, 3.1rem);
-		font-weight: 500;
-		letter-spacing: -0.05em;
-		text-align: center;
-		color: #171717;
-		margin: 0 0 12px;
-	}
-
-	.about-hero h1 {
-		margin: 0;
-		font-size: clamp(4rem, 7vw, 8rem);
-		line-height: 0.9;
-		letter-spacing: -0.08em;
-		font-weight: 700;
-		color: #f3f3f3;
-		padding-bottom: 4px;
-	}
-
-	.content-inner {
-		margin: 0 auto;
-		padding: 0 18px;
-	}
-
-	.about-grid {
-		display: grid;
-		grid-template-columns: 1.5fr 1.1fr 0.8fr;
-		grid-template-areas:
-			"achievements orientation monogram"
-			"animation stats monogram"
-			"animation description description";
-		gap: 12px;
-		padding: 12px 0 0;
-		background: #c5c5c5;
-	}
-
-	.card {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: clamp(1.4rem, 2vw, 2.4rem);
-		letter-spacing: -0.05em;
-		font-weight: 500;
-		text-align: center;
-		padding: 0;
-		box-sizing: border-box;
-		line-height: 1;
-	}
-
-	.card-light {
-		background: #d8d8d8;
-		color: #111;
-	}
-
-	.card-dark {
-		background: #111;
-		color: #f3f3f3;
-	}
-
-	.card-achievements {
-		grid-area: achievements;
-	}
-
-	.card-orientation {
-		grid-area: orientation;
-	}
-
-	.card-monogram {
-		grid-area: monogram;
-		height: 214px;
-		padding: 0;
-		font-size: clamp(2.4rem, 3vw, 4rem);
-	}
-
-	.card-stats {
-		grid-area: stats;
-	}
-
-	.card-animation {
-		grid-area: animation;
-		height: 194px;
-		padding: 0;
-	}
-
-	.card-description {
-		grid-area: description;
-		height: 88px;
-	}
-
-	.story-section {
-		background: #c5c5c5;
-		height: 100vh;
-		width: 100%;
-		padding: 32px 0 0;
-		position: relative;
-	}
-
-	.story-topline {
-		display: flex;
-		align-items: center;
-		padding: 0 18px;
-		gap: 18px;
-	}
-
-	.story-number {
-		font-size: clamp(5rem, 7vw, 11rem);
-		line-height: 0.7;
-		letter-spacing: -0.08em;
-		font-weight: 700;
-		color: rgba(255, 255, 255, 0.8);
-	}
-
-	.story-title-block {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		padding-bottom: 8px;
-	}
-
-	.story-title-block h2 {
-		margin: 0;
-		font-size: clamp(2.8rem, 4vw, 5rem);
-		line-height: 1;
-		letter-spacing: -0.07em;
-		font-weight: 700;
-		color: #111;
-	}
-
-	.story-title-block p {
-		margin: 0;
-		font-size: 1.2rem;
-		color: #1a1a1a;
-	}
-
-	.story-callout {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-		margin-top: 26px;
-		padding: 18px 18px 0;
-		border-top: 2px solid rgba(17, 17, 17, 0.6);
-		font-size: 2rem;
-		font-weight: 500;
-		letter-spacing: -0.05em;
-	}
-
-	.story-callout button {
-		width: 110px;
-		height: 44px;
-		border: 0;
-		background: transparent;
-		color: #111;
-		font-size: 3rem;
-		line-height: 1;
-		cursor: pointer;
-	}
-
-	.story-number-end {
-		position: absolute;
-		right: 18px;
-		bottom: 18px;
-		font-size: clamp(5rem, 8vw, 12rem);
-		line-height: 0.7;
-		letter-spacing: -0.08em;
-		font-weight: 700;
-		color: rgba(255, 255, 255, 0.8);
-	}
-
-	.about-footer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 160px;
-		background: #d3d3d3;
-		font-size: clamp(2.5rem, 3vw, 4rem);
-		letter-spacing: -0.06em;
-		font-weight: 700;
-		margin-top: 42px;
-	}
-
-	@media (max-width: 900px) {
-		.about-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.card.long {
-			grid-column: auto;
-		}
-
-		.story-topline {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-
-		.story-number-end {
-			position: static;
-		}
-	}
-
-	@media (max-width: 640px) {
-		.about-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.card,
-		.card.small,
-		.card.tall,
-		.card.long {
-			height: 120px;
-			grid-column: auto;
-		}
-
-		.story-callout {
-			font-size: 1.4rem;
-		}
-	}
-</style>

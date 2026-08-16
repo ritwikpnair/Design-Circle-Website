@@ -15,154 +15,41 @@ const remainingPosts = posts.slice(1);
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="blog-page-body">
-		<Header />
-		<main class="blog-page-shell">
-			<h1>Browse our Blogs</h1>
+  <head>
+    <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="m-0 bg-[#d7d7d7] text-neutral-900 antialiased">
+    <Header />
+    <main class="mx-auto max-w-7xl px-4 pb-10">
+      <h1 class="mb-5 text-[clamp(4.2rem,5vw,7rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Browse our Blogs</h1>
 
-			{featuredPost && (
-				<section class="feature-post" aria-label="Featured post">
-					<a class="feature-link" href={`/blog/${featuredPost.id}/`}>
-						{featuredPost.data.heroImage && (
-							<Image
-								class="feature-media"
-								width={1280}
-								height={280}
-								src={featuredPost.data.heroImage}
-								alt={featuredPost.data.title}
-							/>
-						)}
-					</a>
-				</section>
-			)}
+      {featuredPost && (
+        <section class="mb-6" aria-label="Featured post">
+          <a class="block text-inherit no-underline" href={`/blog/${featuredPost.id}/`}>
+            {featuredPost.data.heroImage && (
+              <Image class="block h-[60vh] w-full object-cover bg-neutral-950" width={1280} height={280} src={featuredPost.data.heroImage} alt={featuredPost.data.title} />
+            )}
+          </a>
+        </section>
+      )}
 
-			<section class="blog-grid" aria-label="Blog posts">
-				{remainingPosts.map((post) => (
-					<article class="post-card">
-						<a class="post-link" href={`/blog/${post.id}/`}>
-							{post.data.heroImage && (
-								<Image
-									class="post-media"
-									width={720}
-									height={320}
-									src={post.data.heroImage}
-									alt={post.data.title}
-								/>
-							)}
-							<div class="post-meta">
-								<h2>{post.data.title}</h2>
-								<p>{post.data.description}</p>
-								<span>Read Post</span>
-							</div>
-						</a>
-					</article>
-				))}
-			</section>
-		</main>
-		<Footer />
-	</body>
+      <section class="grid gap-4 md:grid-cols-2" aria-label="Blog posts">
+        {remainingPosts.map((post) => (
+          <article class="flex flex-col overflow-hidden bg-[#cfcfcf]">
+            <a class="block text-inherit no-underline" href={`/blog/${post.id}/`}>
+              {post.data.heroImage && (
+                <Image class="block h-[250px] w-full object-cover bg-neutral-950" width={720} height={320} src={post.data.heroImage} alt={post.data.title} />
+              )}
+              <div class="grid gap-1 px-3.5 pb-3.5 pt-3">
+                <h2 class="m-0 text-[clamp(1.5rem,2vw,2.2rem)] font-medium leading-[1.1] tracking-[-0.05em] text-neutral-900">{post.data.title}</h2>
+                <p class="m-0 text-base text-neutral-800">{post.data.description}</p>
+                <span class="mt-1 text-base font-medium text-neutral-900">Read Post</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
-
-<style>
-	.blog-page-body {
-		margin: 0;
-		background: #d7d7d7;
-		color: #111;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-
-	.blog-page-shell {
-		max-width: 1280px;
-		margin: 0 auto;
-		padding: 0 18px 40px;
-		box-sizing: border-box;
-	}
-
-	.blog-page-shell h1 {
-		margin: 16px 0 18px;
-		font-size: clamp(4.2rem, 5vw, 7rem);
-		line-height: 0.9;
-		letter-spacing: -0.08em;
-		font-weight: 700;
-		color: #111;
-	}
-
-	.feature-post {
-		margin-bottom: 22px;
-	}
-
-	.feature-link,
-	.post-link {
-		display: block;
-		text-decoration: none;
-		color: inherit;
-	}
-
-	.feature-media {
-		display: block;
-		height: 60vh;
-		width: 100%;
-		object-fit: cover;
-		background: #111;
-	}
-
-	.blog-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 18px 18px;
-	}
-
-	.post-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0;
-	}
-
-	.post-media {
-		display: block;
-		height: 250px;
-		width: 100%;
-		object-fit: cover;
-		background: #111;
-	}
-
-	.post-meta {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 4px;
-		padding: 12px 14px 14px;
-		background: #cfcfcf;
-		box-sizing: border-box;
-	}
-
-	.post-meta h2 {
-		margin: 0;
-		font-size: clamp(1.5rem, 2vw, 2.2rem);
-		line-height: 1.1;
-		letter-spacing: -0.05em;
-		font-weight: 500;
-		color: #111;
-	}
-
-	.post-meta p {
-		margin: 0;
-		font-size: 1rem;
-		color: rgba(17, 17, 17, 0.8);
-	}
-
-	.post-meta span {
-		margin-top: 2px;
-		font-size: 1rem;
-		font-weight: 500;
-		color: #111;
-	}
-
-	@media (max-width: 760px) {
-		.blog-grid {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>

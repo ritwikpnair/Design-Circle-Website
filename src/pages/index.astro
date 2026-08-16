@@ -17,76 +17,62 @@ const sidebarPosts = posts.slice(1, 6);
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="reference-body">
-		<Header />
-		<main class="reference-page">
-			<section class="content-layout">
-				{latestPost ? (
-					<a class="feature-panel" href={`/blog/${latestPost.id}/`} aria-label={`Read ${latestPost.data.title}`}>
-						<div class="image-area">
-							{latestPost.data.heroImage ? (
-								<Image
-									width={1200}
-									height={600}
-									src={latestPost.data.heroImage}
-									alt={latestPost.data.title}
-								/>
-							) : (
-								<span>{latestPost.data.title}</span>
-							)}
-						</div>
-						<div class="story-row">
-							<h2>{latestPost.data.title}</h2>
-							<div class="story-meta">
-								<span>{latestPost.data.description}</span>
-								<span>
-									<FormattedDate date={latestPost.data.pubDate} />
-								</span>
-							</div>
-						</div>
-					</a>
-				) : (
-					<div class="feature-panel">
-						<div class="image-area">
-							<span>Latest Post</span>
-						</div>
-						<div class="story-row">
-							<h2>Latest Post</h2>
-							<div class="story-meta">
-								<span>Latest post description</span>
-								<span>Date/Time</span>
-							</div>
-						</div>
-					</div>
-				)}
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="bg-[#a5a5a5] text-neutral-900 antialiased">
+    <Header />
+    <main class="mx-auto w-full max-w-7xl px-4 pb-10 pt-4">
+      <section class="grid gap-3 lg:grid-cols-[minmax(0,3.2fr)_minmax(180px,0.8fr)]">
+        {latestPost ? (
+          <a class="block overflow-hidden bg-[#d9d9d9] text-inherit no-underline transition hover:-translate-y-0.5 hover:shadow-lg" href={`/blog/${latestPost.id}/`} aria-label={`Read ${latestPost.data.title}`}>
+            <div class="flex h-[clamp(280px,38vw,540px)] items-center justify-center overflow-hidden bg-neutral-950 text-white">
+              {latestPost.data.heroImage ? (
+                <Image width={1200} height={600} src={latestPost.data.heroImage} alt={latestPost.data.title} class="h-full w-full object-cover" />
+              ) : (
+                <span class="text-[clamp(4rem,6.5vw,9rem)] font-bold tracking-[-0.08em]">{latestPost.data.title}</span>
+              )}
+            </div>
+            <div class="flex min-h-[160px] flex-col justify-center bg-[#d1d1d1] px-5 py-4">
+              <h2 class="m-0 text-[clamp(2.5rem,3vw+0.8rem,5rem)] font-bold leading-none tracking-[-0.08em] text-neutral-900">{latestPost.data.title}</h2>
+              <div class="mt-4 flex flex-col gap-2 text-base text-neutral-700 sm:flex-row sm:items-center sm:justify-between">
+                <span class="max-w-full truncate">{latestPost.data.description}</span>
+                <span><FormattedDate date={latestPost.data.pubDate} /></span>
+              </div>
+            </div>
+          </a>
+        ) : (
+          <div class="overflow-hidden bg-[#d9d9d9]">
+            <div class="flex h-[clamp(280px,38vw,540px)] items-center justify-center bg-neutral-950 text-[clamp(4rem,6.5vw,9rem)] font-bold tracking-[-0.08em] text-white">Latest Post</div>
+            <div class="flex min-h-[160px] flex-col justify-center bg-[#d1d1d1] px-5 py-4">
+              <h2 class="m-0 text-[clamp(2.5rem,3vw+0.8rem,5rem)] font-bold leading-none tracking-[-0.08em] text-neutral-900">Latest Post</h2>
+              <div class="mt-4 flex flex-col gap-2 text-base text-neutral-700 sm:flex-row sm:items-center sm:justify-between">
+                <span>Latest post description</span>
+                <span>Date/Time</span>
+              </div>
+            </div>
+          </div>
+        )}
 
-				<aside class="sidebar-stack" aria-label="Latest stories">
-					{sidebarPosts.map((post) => (
-						<a class="thumb-link" href={`/blog/${post.id}/`}>
-							<div class="thumb-row">
-								<div class="thumb thumb-dark">
-									{post.data.heroImage && (
-										<Image
-											width={500}
-											height={250}
-											src={post.data.heroImage}
-											alt={post.data.title}
-										/>
-									)}
-								</div>
-								<div class="thumb thumb-light">
-									<span>{post.data.title}</span>
-								</div>
-							</div>
-						</a>
-					))}
-				</aside>
-			</section>
-		</main>
+        <aside class="flex flex-col gap-2 bg-[#d7d7d7]" aria-label="Latest stories">
+          {sidebarPosts.map((post) => (
+            <a class="block text-inherit no-underline" href={`/blog/${post.id}/`}>
+              <div class="grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-2.5">
+                <div class="flex h-[clamp(84px,10vw,120px)] items-center justify-center overflow-hidden bg-neutral-950">
+                  {post.data.heroImage && (
+                    <Image width={500} height={250} src={post.data.heroImage} alt={post.data.title} class="h-full w-full object-cover" />
+                  )}
+                </div>
+                <div class="flex h-[clamp(84px,10vw,120px)] items-center justify-center bg-[#b7b7b7] px-2 text-center text-sm font-medium text-neutral-900">
+                  <span class="block max-w-full truncate">{post.data.title}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </aside>
+      </section>
+    </main>
 
-		<Footer />
-	</body>
+    <Footer />
+  </body>
 </html>
