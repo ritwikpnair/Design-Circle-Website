@@ -52,6 +52,7 @@ const sidebarPosts = posts.slice(1, 6);
         )}
 
         <aside class="sidebar-list" aria-label="Latest stories">
+          <h2 style="margin: 0%;">Related Posts</h2>
           {sidebarPosts.map((post) => (
             <a class="sidebar-card" href={`/blog/${post.id}/`}>
               <div class="sidebar-inner">
@@ -60,7 +61,15 @@ const sidebarPosts = posts.slice(1, 6);
                     <Image width={500} height={250} src={post.data.heroImage} alt={post.data.title} class="hero-image" />
                   )}
                 </div>
-                <div class="sidebar-label">{post.data.title}</div>
+                <div class="sidebar-info">
+                    <div class="sidebar-label">{post.data.title}</div>
+                    {post.data.pubDate && (
+                      <div class="sidebar-pub">{post.data.pubDate}</div>
+                    )}
+                    {post.data.description && (
+                      <div class="sidebar-description">{post.data.description}</div>
+                    )}
+                </div>
               </div>
             </a>
           ))}
