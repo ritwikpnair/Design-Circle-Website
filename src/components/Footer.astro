@@ -14,12 +14,14 @@ const serviceColumns = [
     items: ['FinTech', 'eCommerce', 'Travel', 'Social Media', 'Blockchain/Web3', 'Healthcare', 'Startups', 'SaaS', 'Non-Profit', 'Marketplace'],
   },
 ];
+import { Image } from 'astro:assets';
+import LogoMono from '../public/logo-mono.png'
 ---
 
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-brand" aria-hidden="true">
-      <div class="footer-monogram"><img src="/logo-mono.png", alt="Company Logo"/></div>
+      <div class="footer-monogram"><Image src={LogoMono}, alt="Company Logo"/></div>
     </div>
 
     <div class="footer-cta">
