@@ -1,5 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import BaseLink from './BaseLink.astro';
+
 
 type Props = HTMLAttributes<'a'>;
 
@@ -7,10 +9,18 @@ const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Check if it's an internal link starting with '/'
+const stringHref = String(href);
+const isInternal = stringHref.startsWith('/');
+const resolvedHref = isInternal ? `${base}${href}` : href;
 ---
 
+
 <a
-  href={href}
+  href={resolvedHref}
   class:list={[
     className,
     'nav-pill',

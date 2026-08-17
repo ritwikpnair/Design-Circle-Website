@@ -2,16 +2,17 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import { Image } from 'astro:assets';
-import Logo from '../public/logo.png'
+import Logo from '../assets/logo.png'
+import BaseLink from '../components/BaseLink.astro'
 ---
 
 <header class="site-header">
   <div class="site-header-inner">
     <div class="site-header-row">
       <div class="site-header-main">
-        <a href="/" class="brand-mark">
-          <img src="/logo.png" alt={SITE_TITLE} class="brand-img"/>
-        </a>
+        <BaseLink href="/" class="brand-mark">
+          <Image src={Logo} alt={SITE_TITLE} class="brand-img"/>
+        </BaseLink>
         <nav class="nav-group" aria-label="Primary navigation left">
           <HeaderLink href="/about">About</HeaderLink>
           <HeaderLink href="/contact">Contact</HeaderLink>

@@ -1,0 +1,12 @@
+---
+const { href, ...attrs } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Check if it's an internal link starting with '/'
+const isInternal = href && href.startsWith('/');
+const resolvedHref = isInternal ? `${base}${href}` : href;
+---
+
+<a href={resolvedHref} {...attrs}>
+  <slot />
+</a>

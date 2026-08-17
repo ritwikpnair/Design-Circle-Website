@@ -15,18 +15,19 @@ const serviceColumns = [
   },
 ];
 import { Image } from 'astro:assets';
-import LogoMono from '../public/logo-mono.png'
+import LogoMono from '../assets/logo-mono.png'
+import BaseLink from './BaseLink.astro';
 ---
 
 <footer class="site-footer">
   <div class="footer-top">
     <div class="footer-brand" aria-hidden="true">
-      <div class="footer-monogram"><Image src={LogoMono}, alt="Company Logo"/></div>
+      <div class="footer-monogram"><Image src={LogoMono} alt="Company Logo"/></div>
     </div>
 
     <div class="footer-cta">
       <span>If you'd like to work with us,</span>
-      <a href="/contact">get in touch.</a>
+      <BaseLink href="/contact">get in touch.</BaseLink>
     </div>
   </div>
 
