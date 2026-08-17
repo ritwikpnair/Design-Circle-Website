@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getSortedCollection } from '../lib/content';
+import BaseLink from '../components/BaseLink.astro';
 
 const events = await getSortedCollection('events');
 ---
@@ -20,7 +21,7 @@ const events = await getSortedCollection('events');
       <section class="event-grid" aria-label="Events">
         {events.map((event) => (
           <article class="event-card">
-            <a class="card-trigger" href={`/events/${event.id}/`}>
+            <BaseLink class="card-trigger" href={`/events/${event.id}/`}>
               {event.data.heroImage && (
                 <img class="card-media" src={event.data.heroImage.src} alt={event.data.title} />
               )}
@@ -29,7 +30,7 @@ const events = await getSortedCollection('events');
                 <p>{event.data.description}</p>
                 <span class="card-link">Read Event</span>
               </div>
-            </a>
+            </BaseLink>
           </article>
         ))}
       </section>
