@@ -16,7 +16,8 @@ const serviceColumns = [
 ];
 import { Image } from 'astro:assets';
 import LogoMono from '../assets/logo-mono.png'
-import BaseLink from './BaseLink.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="site-footer">
@@ -27,7 +28,7 @@ import BaseLink from './BaseLink.astro';
 
     <div class="footer-cta">
       <span>If you'd like to work with us,</span>
-      <BaseLink href="/contact">get in touch.</BaseLink>
+      <a href={`${base}/contact`}>get in touch.</a>
     </div>
   </div>
 

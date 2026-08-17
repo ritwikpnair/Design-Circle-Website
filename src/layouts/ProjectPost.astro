@@ -5,10 +5,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import BaseLink from '../components/BaseLink.astro';
 
 type Props = CollectionEntry<'projects'>['data'];
 
+const base = import.meta.env.BASE_URL;
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
@@ -381,7 +381,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             <span class="brand-mark">B</span>
             <span class="brand-word">Behance</span>
             <a class="top-link" href="/">Explore</a>
-            <BaseLink class="top-link" href="/projects">Projects</BaseLink>
+            <a class="top-link" href={`${base}/projects`}>Projects</a>
           </div>
 
           <div class="topbar-right">

@@ -24,7 +24,7 @@ const remainingPosts = posts.slice(1);
 
       {featuredPost && (
         <section class="featured-section horizontal-hero-banner" aria-label="Featured post">
-          <a class="featured-story hero-banner-card" href={`/blog/${featuredPost.id}/`}>
+          <a class="featured-story hero-banner-card" href={`${base}/blog/${featuredPost.id}/`}>
             {featuredPost.data.heroImage && (
               <Image class="hero-banner-visual" width={1280} height={280} src={featuredPost.data.heroImage} alt={featuredPost.data.title} />
             )}

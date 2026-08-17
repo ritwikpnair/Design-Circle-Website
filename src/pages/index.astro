@@ -6,8 +6,8 @@ import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getSortedCollection } from '../lib/content';
-import BaseLink from '../components/BaseLink.astro';
 
+const base = import.meta.env.BASE_URL;
 const posts = await getSortedCollection('blog');
 const latestPost = posts[0];
 const sidebarPosts = posts.slice(1, 6);
@@ -23,7 +23,7 @@ const sidebarPosts = posts.slice(1, 6);
     <main class="page-shell">
       <section class="home-grid">
         {latestPost ? (
-          <a class="story-card featured-story" href={`/blog/${latestPost.id}/`} aria-label={`Read ${latestPost.data.title}`}>
+          <a class="story-card featured-story" href={`${base}/blog/${latestPost.id}/`} aria-label={`Read ${latestPost.data.title}`}>
             <div class="featured-visual">
               {latestPost.data.heroImage ? (
                 <Image width={1200} height={600} src={latestPost.data.heroImage} alt={latestPost.data.title} class="hero-image" />
@@ -55,7 +55,7 @@ const sidebarPosts = posts.slice(1, 6);
         <aside class="sidebar-list" aria-label="Latest stories">
           <h2 style="margin: 0%;">Related Posts</h2>
           {sidebarPosts.map((post) => (
-            <BaseLink class="sidebar-card" href={`/blog/${post.id}/`}>
+            <a class="sidebar-card" href={`${base}/blog/${post.id}/`}>
               <div class="sidebar-inner">
                 <div class="sidebar-thumb">
                   {post.data.heroImage && (
@@ -72,7 +72,7 @@ const sidebarPosts = posts.slice(1, 6);
                     )}
                 </div>
               </div>
-            </BaseLink>
+            </a>
           ))}
         </aside>
       </section>
