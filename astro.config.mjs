@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ritwikpnair.github.io',
-	base: "Design-Circle-Website",
+	base: "/Design-Circle-Website",
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
