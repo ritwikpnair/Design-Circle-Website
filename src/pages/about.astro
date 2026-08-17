@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import PhotoTile from '../assets/tile-website.jpeg'
 ---
 
 <!doctype html>
@@ -10,43 +11,222 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={`About | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="m-0 bg-[#c5c5c5] text-neutral-900 antialiased">
+	<body>
 		<Header />
-		<main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-12 pt-6">
-			<section class="relative flex min-h-[calc(100vh-126px)] items-end bg-[#c5c5c5] px-4 py-7 md:px-6">
-				<div class="mx-auto flex w-full max-w-[1280px] flex-col justify-end">
-					<div class="mb-3 text-center text-[clamp(2rem,2vw+1.2rem,3.1rem)] font-medium tracking-[-0.05em] text-neutral-900">Photo/Video/GIF</div>
-					<h1 class="m-0 text-[clamp(4rem,7vw,8rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-100">About Us</h1>
+		<main class="page-shell">
+			<section class="about-hero-block" style="--index: 1;">
+				<div class="about-hero-content">
+					<h1 class="about-hero-title">About Us</h1>
 				</div>
 			</section>
 
-			<div class="mx-auto max-w-[1280px] px-0">
-				<section class="grid gap-3 bg-[#c5c5c5] p-0 md:grid-cols-[1.5fr_1.1fr_0.8fr]" aria-label="About highlights">
-					<div class="flex min-h-[110px] items-center justify-center bg-[#d8d8d8] text-center text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Achievements</div>
-					<div class="flex min-h-[110px] items-center justify-center bg-[#d8d8d8] text-center text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Orientation<br />stats</div>
-					<div class="flex min-h-[214px] items-center justify-center bg-neutral-950 text-[clamp(2.4rem,3vw,4rem)] font-medium tracking-[-0.05em] text-neutral-100">P</div>
-					<div class="flex min-h-[110px] items-center justify-center bg-[#d8d8d8] text-center text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Stats</div>
-					<div class="flex min-h-[194px] items-center justify-center bg-neutral-950 text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-100">Animation</div>
-					<div class="flex min-h-[88px] items-center justify-center bg-[#d8d8d8] text-center text-[clamp(1.4rem,2vw,2.4rem)] font-medium tracking-[-0.05em] text-neutral-900">Events Description</div>
-				</section>
+			<div class="about-grid" style="--index: 2;">
+				<!-- Achievements (Wide Top Left) -->
+				<div class="about-tile tile-achievements">
+					<div class="tile-label">
+						<span style="font-size: clamp(1.5rem, 2vw, 2.5rem); font-weight: 600;">Achievements</span>
+					</div>
+					<div class="tile-hover-content">
+						<p>Recognized for excellence in interactive media design and innovative web development solutions.</p>
+					</div>
+				</div>
 
-				<section class="relative bg-[#c5c5c5] pb-10 pt-8">
-					<div class="flex items-center gap-4 px-4 md:px-5">
-						<div class="text-[clamp(5rem,7vw,11rem)] font-bold leading-[0.7] tracking-[-0.08em] text-white/80">01</div>
-						<div class="flex flex-col gap-3 pb-2">
-							<h2 class="m-0 text-[clamp(2.8rem,4vw,5rem)] font-bold leading-[1] tracking-[-0.07em] text-neutral-900">Our Story</h2>
-							<p class="m-0 text-lg text-neutral-800">Description</p>
+				<!-- Photo (Tall Right Column spanning both rows) -->
+				<div class="about-tile tile-photo dark" style="background-image: url('/tile-website.png'); background-size: cover;">
+					<div class="tile-label">
+						<span style="font-size: clamp(1.5rem, 2vw, 2.5rem); font-weight: 600;">Photo</span>
+					</div>
+					<div class="tile-hover-content">
+						<p>Visual essays and street photography tracking light, shadow, and architectural textures.</p>
+					</div>
+				</div>
+
+				<!-- Animation (Bottom Left) -->
+				<div class="about-tile tile-animation dark">
+					<div class="tile-label">
+						<span style="font-size: clamp(1.2rem, 1.8vw, 2rem); font-weight: 600;">Animation</span>
+					</div>
+					<div class="tile-hover-content">
+						<p>Exploring character rigging, kinetic wire structures, and mockumentary-style sequences.</p>
+					</div>
+				</div>
+
+				<!-- Stats (Bottom Middle) -->
+				<div class="about-tile tile-stats">
+					<div class="tile-label">
+						<span style="font-size: 1.2rem; font-weight: 500;">Stats</span>
+						<strong style="font-size: 2.2rem; line-height: 1; margin: 0.2rem 0;">300+</strong>
+						<span style="font-size: 0.8rem; opacity: 0.8;">Participants</span>
+					</div>
+					<div class="tile-hover-content">
+						<p>Engaged across workshops, design sprints, and community-driven collaborative events.</p>
+					</div>
+				</div>
+			</div>
+			<div class="story-pin-container" id="story-section">
+				<section class="about-story" style="--index: 3;">
+					<div class="about-story-row">
+						<div class="about-story-index">01</div>
+						<div class="about-story-copy">
+							<h2>Our Story</h2>
+							<p>Description</p>
 						</div>
 					</div>
-					<div class="mt-6 flex items-center justify-between gap-4 border-t border-neutral-900/60 px-4 pt-4 md:px-5">
-						<span class="text-2xl font-medium tracking-[-0.05em] text-neutral-900">Scroll</span>
-						<button type="button" aria-label="Scroll" class="h-11 w-[110px] border-0 bg-transparent text-3xl leading-none text-neutral-900">→</button>
-					</div>
-					<div class="absolute bottom-4 right-4 text-[clamp(5rem,8vw,12rem)] font-bold leading-[0.7] tracking-[-0.08em] text-white/80">02</div>
+					<div class="about-story-figure">02</div>
 				</section>
 			</div>
 		</main>
 		<Footer />
+		<script>
+			function updateNavbarHeight() {
+				// Select your navbar element (change 'header' to your specific navbar class if needed)
+				const navbar = document.querySelector('header');
+				if (navbar) {
+				const height = navbar.offsetHeight;
+				// Sets a CSS variable --navbar-height on the root html element
+				document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+				}
+			}
+
+			// Run on initial load
+			updateNavbarHeight();
+
+			// Recalculate if the window resizes (handles responsive mobile menu changes)
+			window.addEventListener('resize', updateNavbarHeight);
+		</script>
+		<script>
+			window.addEventListener('scroll', () => {
+				// Select all your layers in sequence
+				const stickyLayers = document.querySelectorAll('.about-hero, .about-hero-block, .about-grid, .about-story');
+
+				stickyLayers.forEach((layer, index) => {
+				const nextLayer = stickyLayers[index + 1];
+				
+				if (nextLayer) {
+					// Use getBoundingClientRect().top relative to the viewport + current scroll
+					const nextRect = nextLayer.getBoundingClientRect();
+					
+					// When the top of the next layer enters the screen (e.g. 80% down the viewport)
+					const triggerHeight = window.innerHeight * 0.8;
+
+					if (nextRect.top <= triggerHeight) {
+					layer.classList.add('is-faded');
+					} else {
+					layer.classList.remove('is-faded');
+					}
+				}
+				});
+			}, { passive: true });
+		</script>
+		<script>
+			const storySection = document.querySelector('.about-story') as HTMLElement | null;
+			const container = document.getElementById('story-section') as HTMLElement | null;
+			const indexEl = storySection?.querySelector('.about-story-index') as HTMLElement | null;
+			const titleEl = storySection?.querySelector('.about-story-copy h2') as HTMLElement | null;
+			const descEl = storySection?.querySelector('.about-story-copy p') as HTMLElement | null;
+			const figureEl = storySection?.querySelector('.about-story-figure') as HTMLElement | null;
+
+			interface StoryStep {
+				num: string;
+				title: string;
+				desc: string;
+				figure: string;
+			}
+
+			const storySteps: StoryStep[] = [
+				{
+				num: "01",
+				title: "Our Story",
+				desc: "Description of the initial founding, vision, and core roots.",
+				figure: "02"
+				},
+				{
+				num: "02",
+				title: "Growth & Vision",
+				desc: "Expanding design sprints, technical art exploration, and collaboration.",
+				figure: "03"
+				},
+				{
+				num: "03",
+				title: "Growth & Vision",
+				desc: "Expanding design sprints, technical art exploration, and collaboration.",
+				figure: "04"
+				},
+				{
+				num: "04",
+				title: "Growth & Vision",
+				desc: "Expanding design sprints, technical art exploration, and collaboration.",
+				figure: "05"
+				}
+			];
+
+			function updateStoryContent(): void {
+				if (!container || !storySection || !indexEl || !titleEl || !descEl) return;
+
+				const rect = container.getBoundingClientRect();
+				const scrollDistance = container.offsetHeight - window.innerHeight;
+
+				// Track progress precisely from when the container enters the top of the viewport
+				let progress = -rect.top / scrollDistance;
+				progress = Math.max(0, Math.min(1, progress));
+
+				// Map progress directly to total steps
+				const totalSteps = storySteps.length;
+				let currentStepIndex = Math.floor(progress * totalSteps);
+				if (currentStepIndex >= totalSteps) {
+				currentStepIndex = totalSteps - 1;
+				}
+
+				const currentData = storySteps[currentStepIndex];
+
+				if (indexEl.textContent !== currentData.num) {
+				indexEl.style.opacity = '0';
+				titleEl.style.opacity = '0';
+				descEl.style.opacity = '0';
+				if (figureEl) figureEl.style.opacity = '0';
+
+				setTimeout(() => {
+					if (!indexEl || !titleEl || !descEl) return;
+					indexEl.textContent = currentData.num;
+					titleEl.textContent = currentData.title;
+					descEl.textContent = currentData.desc;
+					if (figureEl) figureEl.textContent = currentData.figure;
+
+					indexEl.style.opacity = '1';
+					titleEl.style.opacity = '1';
+					descEl.style.opacity = '1';
+					if (figureEl) figureEl.style.opacity = '1';
+				}, 150);
+				}
+			}
+
+			window.addEventListener('scroll', updateStoryContent, { passive: true });
+			window.addEventListener('resize', updateStoryContent);
+		</script>
+		<script>
+			window.addEventListener('scroll', () => {
+				// Select all your layers in sequence
+				const stickyLayers = document.querySelectorAll('.about-story-figure .about-story-index');
+
+				stickyLayers.forEach((layer, index) => {
+				const nextLayer = stickyLayers[index + 1];
+				
+				if (nextLayer) {
+					// Use getBoundingClientRect().top relative to the viewport + current scroll
+					const nextRect = nextLayer.getBoundingClientRect();
+					
+					// When the top of the next layer enters the screen (e.g. 80% down the viewport)
+					const triggerHeight = window.innerHeight * 0.8;
+
+					if (nextRect.top <= triggerHeight) {
+					layer.classList.add('is-faded');
+					} else {
+					layer.classList.remove('is-faded');
+					}
+				}
+				});
+			}, { passive: true });
+		</script>
 	</body>
 </html>
 

@@ -22,29 +22,29 @@ const projectEntries = await Promise.all(
   <head>
     <BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
   </head>
-  <body class="m-0 bg-white text-neutral-900 antialiased">
+  <body>
     <Header />
-    <main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-12 pt-6">
-      <h1 class="mb-6 text-[clamp(4.2rem,5vw,7rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Projects</h1>
-      <section class="grid gap-4 md:grid-cols-2" aria-label="Projects">
+    <main class="page-shell">
+      <h1 class="page-title">Projects</h1>
+      <section class="project-grid" aria-label="Projects">
         {projects.map((project) => (
           <article
-            class="flex flex-col overflow-hidden rounded-[22px] border-2 border-[#c9c9c9] bg-white/45 shadow-[0_12px_30px_rgba(17,17,17,0.08)] backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#a8a8a8] hover:shadow-[0_16px_30px_rgba(17,17,17,0.12)]"
+            class="project-card"
             data-project-id={project.id}
             aria-label={`Open ${project.data.title}`}
           >
-            <div class="block cursor-pointer text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-black/20" role="button" tabindex="0" aria-label={`Open ${project.data.title}`}>
+            <div class="project-trigger" role="button" tabindex="0" aria-label={`Open ${project.data.title}`}>
               {project.data.heroImage && (
                 <img
-                  class="block h-[250px] w-full object-cover bg-neutral-950"
+                  class="card-media"
                   src={project.data.heroImage.src}
                   alt={project.data.title}
                 />
               )}
-              <div class="grid gap-1 px-3.5 pb-3.5 pt-3">
-                <h2 class="m-0 text-[clamp(1.5rem,2vw,2.2rem)] font-medium leading-[1.1] tracking-[-0.05em] text-neutral-900">{project.data.title}</h2>
-                <p class="m-0 text-base text-neutral-800">{project.data.description}</p>
-                <span class="mt-1 text-base font-medium text-blue-700">Open Project</span>
+              <div class="card-copy">
+                <h2>{project.data.title}</h2>
+                <p>{project.data.description}</p>
+                <span class="card-link">Open Project</span>
               </div>
             </div>
           </article>

@@ -10,26 +10,26 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={`Contact | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
-	<body class="m-0 bg-white text-neutral-900 antialiased">
+	<body>
 		<Header />
-		<main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-12 pt-6">
-			<h1 class="mb-6 text-[clamp(4.5rem,7vw,9rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Contact Us</h1>
+		<main class="contact-page">
+			<h1>Contact Us</h1>
 
-			<div class="grid gap-4 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-				<section class="flex flex-col gap-4" aria-label="Contact information">
-					<div class="flex min-h-[180px] flex-col justify-center rounded-[22px] border-2 border-[#c9c9c9] bg-white/45 p-5 shadow-[0_16px_30px_rgba(17,17,17,0.07)] backdrop-blur-md md:p-6">
-						<h2 class="mb-2 text-[clamp(2rem,3vw,3.6rem)] font-medium tracking-[-0.06em] text-neutral-900">Phone / Numbers</h2>
-						<p class="m-0 text-[clamp(1.2rem,2vw,1.8rem)] text-neutral-900">Numbers</p>
+			<div class="contact-grid">
+				<section class="contact-stack" aria-label="Contact information">
+					<div class="contact-card">
+						<h2>Phone</h2>
+						<p>+91 600-329-2231</p>
+						<p>+91 700-268-2883</p>
 					</div>
 
-					<div class="flex min-h-[180px] flex-col justify-center rounded-[22px] border-2 border-[#c9c9c9] bg-white/45 p-5 shadow-[0_16px_30px_rgba(17,17,17,0.07)] backdrop-blur-md md:p-6">
-						<h2 class="mb-2 text-[clamp(2rem,3vw,3.6rem)] font-medium tracking-[-0.06em] text-neutral-900">Social Media Handles</h2>
-						<p class="m-0 text-[clamp(1.2rem,2vw,1.8rem)] text-neutral-900">Instagram</p>
+					<div class="contact-card">
+						<h2>Email</h2>
+						<p>designcircleclub@cit.ac.in</p>
 					</div>
 				</section>
 
-				<section class="flex" aria-label="Illustration or animation panel">
-					<div class="flex h-[378px] w-full items-center justify-center bg-neutral-950 p-6 text-center text-[clamp(2.2rem,3vw,4rem)] font-medium leading-[1.1] tracking-[-0.06em] text-neutral-100">Illustration or animation</div>
+				<section class="contact-illustration" aria-label="Illustration or animation panel">
 				</section>
 			</div>
 		</main>

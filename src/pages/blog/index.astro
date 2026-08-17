@@ -16,32 +16,40 @@ const remainingPosts = posts.slice(1);
   <head>
     <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
   </head>
-  <body class="m-0 bg-white text-neutral-900 antialiased">
+  <body>
     <Header />
-    <main class="mx-auto w-[calc(100%-2rem)] max-w-[1280px] pb-12 pt-6">
-      <h1 class="mb-6 text-[clamp(4.2rem,5vw,7rem)] font-bold leading-[0.9] tracking-[-0.08em] text-neutral-900">Browse our Blogs</h1>
+    <main class="page-shell">
+      <h1 class="page-title">Browse our Blogs</h1>
 
       {featuredPost && (
-        <section class="mb-6" aria-label="Featured post">
-          <a class="block text-inherit no-underline" href={`/blog/${featuredPost.id}/`}>
+        <section class="featured-section horizontal-hero-banner" aria-label="Featured post">
+          <a class="featured-story hero-banner-card" href={`/blog/${featuredPost.id}/`}>
             {featuredPost.data.heroImage && (
-              <Image class="block h-[60vh] w-full object-cover bg-neutral-950" width={1280} height={280} src={featuredPost.data.heroImage} alt={featuredPost.data.title} />
+              <Image class="hero-banner-visual" width={1280} height={280} src={featuredPost.data.heroImage} alt={featuredPost.data.title} />
             )}
-          </a>
+			<div class="hero-banner-copy">
+				<div class="hero-banner-meta">
+					<span class="hero-date">Jun 19, 2024</span>
+					<span class="hero-category">App Development</span>
+				</div>
+				<h2 class="hero-banner-title">Markdown Style Guide</h2>
+				<p class="hero-banner-excerpt">Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.</p>
+			</div>
+		  </a>
         </section>
       )}
 
-      <section class="grid gap-4 md:grid-cols-2" aria-label="Blog posts">
+      <section class="posts-grid" aria-label="Blog posts">
         {remainingPosts.map((post) => (
-          <article class="flex flex-col overflow-hidden rounded-[22px] border-2 border-[#c9c9c9] bg-white/45 shadow-[0_12px_30px_rgba(17,17,17,0.08)] backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#a8a8a8] hover:shadow-[0_16px_30px_rgba(17,17,17,0.12)]">
-            <a class="block text-inherit no-underline" href={`/blog/${post.id}/`}>
+          <article class="article-card">
+            <a class="card-link-plain" href={`/blog/${post.id}/`}>
               {post.data.heroImage && (
-                <Image class="block h-[250px] w-full object-cover bg-neutral-950" width={720} height={320} src={post.data.heroImage} alt={post.data.title} />
+                <Image class="card-media" width={720} height={320} src={post.data.heroImage} alt={post.data.title} />
               )}
-              <div class="grid gap-1 px-3.5 pb-3.5 pt-3">
-                <h2 class="m-0 text-[clamp(1.5rem,2vw,2.2rem)] font-medium leading-[1.1] tracking-[-0.05em] text-neutral-900">{post.data.title}</h2>
-                <p class="m-0 text-base text-neutral-800">{post.data.description}</p>
-                <span class="mt-1 text-base font-medium text-neutral-900">Read Post</span>
+              <div class="card-copy">
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <span class="card-link">Read Post</span>
               </div>
             </a>
           </article>

@@ -13,8 +13,8 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
   href={href}
   class:list={[
     className,
-    'inline-flex items-center justify-center rounded-full border-2 border-[#c9c9c9] px-3 py-2 text-base font-medium text-neutral-800 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#a8a8a8] hover:text-neutral-950 hover:shadow-[0_8px_18px_rgba(17,17,17,0.08)]',
-    isActive ? 'bg-neutral-950 text-neutral-100 shadow-[0_4px_12px_rgba(0,0,0,0.18)]' : 'bg-neutral-200/90 text-neutral-900',
+    'nav-pill',
+    isActive ? 'active' : '',
   ]}
   {...props}
 >
